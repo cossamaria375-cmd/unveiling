@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unveiling</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#fbf6ea;
+  --paper:#fffdf8;
+  --burg:#7a1f2e;
+  --burgl:#9a3345;
+  --burgd:#4f1119;
+  --gold:#c9a24a;
+  --goldd:#a8812f;
+  --ink:#4a1c26;
+}
+*{box-sizing:border-box;}
+body{margin:0;font-family:'Lato',sans-serif;color:var(--ink);font-size:17px;min-height:100vh;
+  padding-bottom:100px;
+  background:linear-gradient(180deg,#fffdf8,#f4e9d0) fixed;}
+h1,h2,h3,.name2,.big{font-family:'Playfair Display',serif;}
+
+/* COVER + ENVELOPE */
+#cover{position:fixed;inset:0;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;
+  background:radial-gradient(circle at 50% 30%,#fffdf8,#efe0bd 85%);
+  transition:transform 1s ease,opacity 1s ease;}
+#cover.hide{transform:scale(1.25);opacity:0;pointer-events:none;}
+#cover h2{font-size:34px;color:var(--burg);margin:26px 0 4px;transition:opacity .5s;}
+#cover p{letter-spacing:3px;text-transform:uppercase;font-size:13px;margin:4px 0 22px;color:var(--goldd);transition:opacity .5s;}
+#cover .openbtn{font-family:'Playfair Display',serif;font-size:18px;padding:14px 34px;border-radius:40px;border:2px solid var(--gold);background:var(--burg);color:var(--cream);font-weight:700;cursor:pointer;animation:pulse 1.6s infinite;transition:opacity .5s;}
+#cover.opening h2,#cover.opening p,#cover.opening .openbtn{opacity:0;}
+@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.07);}}
+.spark{position:absolute;color:var(--gold);animation:twinkle 3s infinite;}
+@keyframes twinkle{0%,100%{opacity:.2;transform:scale(.8);}50%{opacity:1;transform:scale(1.3);}}
+
+.envwrap{position:relative;width:270px;height:180px;margin-top:70px;background:var(--burg);border-radius:6px;
+  perspective:900px;box-shadow:0 14px 28px rgba(79,17,25,.35);cursor:pointer;animation:float 3s ease-in-out infinite;}
+.envwrap.open{animation:none;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+.letter{position:absolute;left:12px;right:12px;top:12px;height:150px;background:var(--paper);border:2px solid var(--gold);border-radius:4px;
+  z-index:1;text-align:center;padding:14px 8px;transition:transform .9s ease .7s;}
+.letter .l1{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--goldd);}
+.letter .l2{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--burg);margin:4px 0;letter-spacing:2px;text-transform:uppercase;}
+.letter .l3{font-family:'Playfair Display',serif;font-style:italic;font-size:16px;color:var(--ink);}
+.letter .l4{font-size:12px;color:var(--goldd);margin-top:6px;letter-spacing:1px;}
+.pocket{position:absolute;inset:0;background:var(--burgd);clip-path:polygon(0 0,50% 55%,100% 0,100% 100%,0 100%);z-index:3;border-radius:6px;}
+.flap{position:absolute;left:0;top:0;width:100%;height:55%;background:var(--burgl);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top center;z-index:2;}
+.seal{position:absolute;left:50%;top:calc(55% - 20px);width:40px;height:40px;margin-left:-20px;border-radius:50%;background:var(--gold);color:var(--burgd);
+  display:flex;align-items:center;justify-content:center;font-size:20px;z-index:5;border:2px solid #e6c97a;transition:opacity .3s;}
+.envwrap.open .seal{opacity:0;}
+.envwrap.open .flap{animation:flapopen .7s forwards;}
+.envwrap.open .letter{transform:translateY(-105px);}
+@keyframes flapopen{
+  0%{transform:rotateX(0deg);z-index:2;}
+  49%{z-index:2;}
+  50%{transform:rotateX(90deg);z-index:0;}
+  100%{transform:rotateX(180deg);z-index:0;}
+}
+
+/* BOTTOM MENU */
+#main{display:none;}
+#main.show{display:block;}
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:8;display:flex;gap:2px;padding:8px 6px calc(8px + env(safe-area-inset-bottom));
+  background:var(--burg);border-top:3px solid var(--gold);}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;background:none;border:none;color:#f3dfb0;padding:8px 2px;cursor:pointer;
+  font-family:'Lato',sans-serif;font-size:11px;letter-spacing:.3px;border-radius:12px;}
+.tab svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.tab.active{background:var(--gold);color:var(--burgd);font-weight:700;}
+
+/* CARDS */
+.card{display:none;max-width:480px;margin:20px auto;border:2px solid var(--gold);border-top:7px solid var(--burg);border-radius:18px;padding:22px;text-align:center;
+  box-shadow:0 10px 26px rgba(122,31,46,.2);position:relative;background:var(--paper);color:var(--ink);}
+.card.active{display:block;}
+#invite,#photos{background:linear-gradient(180deg,#fbf0d6,var(--paper));}
+h1{font-size:34px;color:var(--burg);margin:8px 0;}
+.label{font-family:'Playfair Display',serif;font-size:14px;letter-spacing:3px;text-transform:uppercase;color:var(--burg);margin-top:16px;font-weight:700;}
+.big{font-size:26px;color:var(--burg);margin:8px 0;}
+p{line-height:1.6;margin:6px 0;}
+.orn{display:flex;align-items:center;justify-content:center;gap:10px;margin:18px auto;width:200px;}
+.orn::before,.orn::after{content:"";flex:1;height:2px;background:var(--gold);}
+.orn span{width:10px;height:10px;background:var(--burg);transform:rotate(45deg);}
+
+/* PENDANTS */
+#invite{margin-bottom:130px;}
+.pendants{position:absolute;left:0;right:0;bottom:-105px;height:105px;display:flex;justify-content:space-around;padding:0 24px;pointer-events:none;}
+.pend{display:flex;flex-direction:column;align-items:center;transform-origin:top center;animation:sway 3.2s ease-in-out infinite;}
+.pend .string{width:2px;background:var(--gold);}
+.pend svg{display:block;}
+@keyframes sway{0%,100%{transform:rotate(7deg);}50%{transform:rotate(-7deg);}}
+
+/* HOME */
+.top .small{letter-spacing:3px;text-transform:uppercase;font-size:13px;color:var(--goldd);margin:0;font-weight:700;}
+.top h1{font-size:44px;letter-spacing:4px;text-transform:uppercase;margin:6px 0;}
+.top .name{font-family:'Playfair Display',serif;font-style:italic;font-weight:600;font-size:26px;color:var(--ink);margin:2px 0 16px;}
+.photo{width:100%;height:auto;display:block;border-radius:14px;border:2px solid var(--gold);cursor:pointer;}
+.verse{font-family:'Playfair Display',serif;font-style:italic;color:var(--burg);font-size:19px;margin-top:18px;}
+.ref{font-size:14px;color:var(--goldd);font-weight:700;letter-spacing:1px;}
+.name2{font-weight:700;font-size:26px;color:var(--burg);margin:6px 0;font-style:italic;}
+
+.btn{display:block;width:100%;font-family:'Playfair Display',serif;font-size:17px;font-weight:700;letter-spacing:1px;padding:14px;margin-top:12px;border-radius:40px;cursor:pointer;text-decoration:none;text-align:center;}
+.btn.solid{background:var(--burg);color:var(--cream);border:2px solid var(--burg);}
+.btn.line{background:transparent;color:var(--burg);border:2px solid var(--burg);}
+
+/* GALLERY */
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;}
+.gallery div{height:220px;background:var(--cream);border-radius:10px;overflow:hidden;border:2px solid var(--gold);cursor:pointer;}
+.gallery img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
+
+@media(max-width:360px){.tab{font-size:10px;}.card{margin:12px;padding:16px;}.top h1{font-size:34px;}}
+
+/* RSVP */
+.choice{display:flex;gap:10px;margin:14px 0;}
+.choice button{flex:1;font-family:'Playfair Display',serif;font-size:20px;font-weight:700;padding:14px;border-radius:12px;border:3px solid var(--burg);background:#fff;color:var(--burg);cursor:pointer;}
+.choice button.sel{background:var(--burg);color:var(--cream);}
+input{width:100%;padding:12px;margin:6px 0;font-size:16px;border:2px solid var(--gold);border-radius:8px;font-family:'Lato',sans-serif;background:#fff;color:var(--ink);}
+.send{font-family:'Playfair Display',serif;background:var(--burg);color:var(--cream);border:none;padding:13px 32px;font-size:17px;border-radius:30px;cursor:pointer;margin-top:10px;font-weight:700;}
+#thanks{color:var(--burg);font-weight:700;margin-top:12px;}
+a{color:var(--burg);font-weight:700;}
+a.btn.solid{color:var(--cream);}
+
+/* MUSIC BUTTON + MESSAGE */
+#musicBtn{display:none;position:fixed;right:14px;bottom:92px;z-index:9;width:52px;height:52px;border-radius:50%;font-size:24px;line-height:1;
+  background:var(--burg);color:#f3dfb0;border:2px solid var(--gold);cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.35);}
+#musicBtn.show{display:block;}
+#musicBtn.off{opacity:.55;}
+#toast{display:none;position:fixed;left:50%;bottom:160px;transform:translateX(-50%);z-index:40;max-width:88%;text-align:center;
+  background:var(--burgd);color:var(--cream);border:2px solid var(--gold);border-radius:14px;padding:10px 16px;font-size:14px;}
+#toast.show{display:block;}
+
+/* HIDDEN YOUTUBE PLAYER */
+#ytbox{position:fixed;right:0;bottom:0;width:200px;height:200px;opacity:.01;pointer-events:none;z-index:0;overflow:hidden;}
+
+/* LIGHTBOX */
+#light{display:none;position:fixed;inset:0;z-index:30;background:rgba(50,10,18,.96);align-items:center;justify-content:center;}
+#light.show{display:flex;}
+#light img{max-width:94%;max-height:86%;object-fit:contain;border:2px solid var(--gold);border-radius:8px;}
+#light button{position:absolute;background:var(--gold);color:var(--burgd);border:none;font-size:26px;font-weight:700;width:48px;height:48px;border-radius:50%;cursor:pointer;}
+#lClose{top:14px;right:14px;}
+#lPrev{left:10px;top:50%;transform:translateY(-50%);}
+#lNext{right:10px;top:50%;transform:translateY(-50%);}
+</style>
+</head>
+<body>
+
+<!-- SONG FROM YOUTUBE (hidden player) -->
+<div id="ytbox"><div id="ytplayer"></div></div>
+
+<div id="toast"></div>
+
+<!-- COVER: ENVELOPE THAT OPENS -->
+<div id="cover">
+  <span class="spark" style="top:10%;left:12%;font-size:28px">✦</span>
+  <span class="spark" style="top:18%;right:14%;font-size:20px;animation-delay:1s">✦</span>
+  <span class="spark" style="bottom:20%;left:18%;font-size:22px;animation-delay:.5s">✦</span>
+  <span class="spark" style="bottom:12%;right:10%;font-size:30px;animation-delay:1.5s">✦</span>
+
+  <div class="envwrap" id="env" onclick="openInvite()">
+    <div class="letter">
+      <div class="l1">You are invited</div>
+      <div class="l2">Unveiling</div>
+      <div class="l3">Merriam Nteseng Tladi</div>
+      <div class="l4">26 December 2026 • 07h00</div>
+    </div>
+    <div class="pocket"></div>
+    <div class="flap"></div>
+    <div class="seal">♥</div>
+  </div>
+
+  <h2>You are invited</h2>
+  <p>Unveiling of a loved one</p>
+  <button class="openbtn" onclick="openInvite()">Open Invitation</button>
+</div>
+
+<button id="musicBtn" class="off" onclick="toggleMusic()">♪</button>
+
+<!-- LIGHTBOX -->
+<div id="light" onclick="closeLight()">
+  <button id="lClose" onclick="closeLight()">×</button>
+  <button id="lPrev" onclick="event.stopPropagation();nav(-1)">‹</button>
+  <img id="lImg" src="" alt="" onclick="event.stopPropagation()">
+  <button id="lNext" onclick="event.stopPropagation();nav(1)">›</button>
+</div>
+
+<!-- MAIN -->
+<div id="main">
+
+  <!-- HOME -->
+  <section class="card active" id="home">
+    <div class="top">
+      <p class="small">In memory of the late</p>
+      <h1>Unveiling</h1>
+      <p class="name">Merriam Nteseng Tladi</p>
+    </div>
+
+    <img class="photo" src="images/Pic1.jpg" alt="Merriam Nteseng Tladi" onclick="openLight(0)">
+
+    <p class="verse">"In my Father's house are many mansions... I go to prepare a place for you."</p>
+    <p class="ref">John 14:2</p>
+
+    <button class="btn solid" onclick="show('invite')">VIEW INVITATION</button>
+    <button class="btn line" onclick="show('rsvp')">RSVP</button>
+  </section>
+
+  <!-- INVITE -->
+  <section class="card" id="invite">
+    <h1>Invitation</h1>
+    <div class="orn"><span></span></div>
+    <p>The family warmly invites you to join us as we unveil the tombstone of</p>
+    <div class="name2">Merriam Nteseng Tladi</div>
+    <p>and honour her life.</p>
+    <div class="orn"><span></span></div>
+    <div class="label">Date</div>
+    <p>Saturday, 26 December 2026</p>
+    <div class="label">Time</div>
+    <p>07h00</p>
+    <div class="label">Venue</div>
+    <p>80374 Majakaneng, Sgandaf Sec</p>
+
+    <div class="pendants">
+      <div class="pend" style="animation-delay:0s"><div class="string" style="height:40px"></div>
+        <svg width="26" height="34" viewBox="0 0 26 34"><polygon points="13,0 26,17 13,34 0,17" fill="#7a1f2e" stroke="#c9a24a" stroke-width="2"/></svg></div>
+      <div class="pend" style="animation-delay:.6s"><div class="string" style="height:62px"></div>
+        <svg width="26" height="26" viewBox="0 0 26 26"><circle cx="13" cy="13" r="11" fill="#fffdf8" stroke="#c9a24a" stroke-width="3"/></svg></div>
+      <div class="pend" style="animation-delay:1.2s"><div class="string" style="height:34px"></div>
+        <svg width="30" height="30" viewBox="0 0 30 30"><polygon points="15,1 19,11 29,11 21,18 24,28 15,22 6,28 9,18 1,11 11,11" fill="#c9a24a" stroke="#a8812f" stroke-width="2"/></svg></div>
+      <div class="pend" style="animation-delay:1.8s"><div class="string" style="height:56px"></div>
+        <svg width="26" height="34" viewBox="0 0 26 34"><polygon points="13,0 26,17 13,34 0,17" fill="#fffdf8" stroke="#7a1f2e" stroke-width="2"/></svg></div>
+      <div class="pend" style="animation-delay:2.4s"><div class="string" style="height:44px"></div>
+        <svg width="30" height="30" viewBox="0 0 30 30"><polygon points="15,1 19,11 29,11 21,18 24,28 15,22 6,28 9,18 1,11 11,11" fill="#7a1f2e" stroke="#c9a24a" stroke-width="2"/></svg></div>
+    </div>
+  </section>
+
+  <!-- TIMES -->
+  <section class="card" id="times">
+    <h1>Times</h1>
+    <div class="orn"><span></span></div>
+    <div class="label">Date</div>
+    <div class="big">Saturday, 26 December 2026</div>
+    <div class="label">Time</div>
+    <div class="big">07h00</div>
+  </section>
+
+  <!-- WHERE -->
+  <section class="card" id="where">
+    <h1>Where</h1>
+    <div class="orn"><span></span></div>
+    <div class="label">Venue</div>
+    <div class="big">80374 Majakaneng, Sgandaf Sec</div>
+    <a class="btn solid" target="_blank" href="https://www.google.com/maps/search/?api=1&query=80374%20Majakaneng%20Sgandaf">OPEN IN MAPS</a>
+  </section>
+
+  <!-- RSVP -->
+  <section class="card" id="rsvp">
+    <h1>RSVP</h1>
+    <p>Will you be attending?</p>
+    <div class="choice">
+      <button id="yes" onclick="pick('yes')">Yes</button>
+      <button id="no" onclick="pick('no')">No</button>
+    </div>
+    <input id="guestName" type="text" placeholder="Your name">
+    <input id="guestNumber" type="number" min="1" placeholder="Number of people">
+    <p>Call or WhatsApp: <a href="tel:+27729714155">+27 72 971 4155</a></p>
+    <button class="send" onclick="sendRsvp()">Send</button>
+    <div id="thanks"></div>
+  </section>
+
+  <!-- PHOTOS -->
+  <section class="card" id="photos">
+    <h1>Photos</h1>
+    <p>Tap a picture to enlarge it.</p>
+    <div class="gallery">
+      <div onclick="openLight(0)"><img src="images/Pic1.jpg" alt="Picture 1"></div>
+      <div onclick="openLight(1)"><img src="images/Pic2.jpg" alt="Picture 2"></div>
+      <div onclick="openLight(2)"><img src="images/Pic3.jpg" alt="Picture 3"></div>
+    </div>
+  </section>
+
+  <!-- BOTTOM MENU -->
+  <nav class="tabs">
+    <button class="tab active" data-id="home" onclick="show('home')">
+      <svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Home</button>
+    <button class="tab" data-id="invite" onclick="show('invite')">
+      <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Invite</button>
+    <button class="tab" data-id="times" onclick="show('times')">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Times</button>
+    <button class="tab" data-id="where" onclick="show('where')">
+      <svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Where</button>
+    <button class="tab" data-id="rsvp" onclick="show('rsvp')">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>RSVP</button>
+    <button class="tab" data-id="photos" onclick="show('photos')">
+      <svg viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.5"/></svg>Photos</button>
+  </nav>
+
+</div>
+
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+/* SMALL MESSAGE */
+var toastTimer;
+function say(msg) {
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 5000);
+}
+
+/* SONG (YouTube) */
+var VIDEO_ID = 's7eU7srtucA';
+var yt = null;
+var ytReady = false;
+var wantPlay = false;
+var musicBtn = document.getElementById('musicBtn');
+
+function onYouTubeIframeAPIReady() {
+  var pv = { loop: 1, playlist: VIDEO_ID, controls: 0, playsinline: 1, rel: 0 };
+  if (location.protocol.indexOf('http') === 0) { pv.origin = location.origin; }
+
+  yt = new YT.Player('ytplayer', {
+    width: '200',
+    height: '200',
+    videoId: VIDEO_ID,
+    playerVars: pv,
+    events: {
+      onReady: function () {
+        ytReady = true;
+        if (wantPlay) { yt.playVideo(); }
+      },
+      onStateChange: function (e) {
+        if (e.data === YT.PlayerState.PLAYING) { musicBtn.classList.remove('off'); }
+        if (e.data === YT.PlayerState.PAUSED) { musicBtn.classList.add('off'); }
+      },
+      onError: function (e) {
+        musicBtn.classList.add('off');
+        if (e.data === 101 || e.data === 150) {
+          say('This song is blocked from playing on other websites. Please choose another song.');
+        } else if (e.data === 153) {
+          say('Open this page with Live Server, not by double-clicking the file.');
+        } else {
+          say('The song cannot play right now (error ' + e.data + ').');
+        }
+      }
+    }
+  });
+}
+
+var opened = false;
+
+function openInvite() {
+  if (opened) { return; }
+  opened = true;
+
+  document.getElementById('env').classList.add('open');
+  document.getElementById('cover').classList.add('opening');
+
+  wantPlay = true;
+  if (ytReady) { yt.playVideo(); }
+
+  setTimeout(function () {
+    document.getElementById('cover').classList.add('hide');
+    document.getElementById('main').classList.add('show');
+    musicBtn.classList.add('show');
+    window.scrollTo(0, 0);
+  }, 2300);
+}
+
+function toggleMusic() {
+  if (!ytReady) { wantPlay = true; say('The song is still loading. Tap again in a moment.'); return; }
+  if (yt.getPlayerState() === YT.PlayerState.PLAYING) {
+    yt.pauseVideo();
+    musicBtn.classList.add('off');
+  } else {
+    yt.playVideo();
+  }
+}
+
+/* MENU */
+function show(id) {
+  document.querySelectorAll('.card').forEach(function(c){ c.classList.remove('active'); });
+  document.querySelectorAll('.tab').forEach(function(t){ t.classList.toggle('active', t.getAttribute('data-id') === id); });
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+/* PICTURES: tap to enlarge */
+var pics = ['images/Pic1.jpg', 'images/Pic2.jpg', 'images/Pic3.jpg'];
+var cur = 0;
+
+function openLight(i) {
+  cur = i;
+  document.getElementById('lImg').src = pics[cur];
+  document.getElementById('light').classList.add('show');
+}
+function closeLight() {
+  document.getElementById('light').classList.remove('show');
+}
+function nav(d) {
+  cur = (cur + d + pics.length) % pics.length;
+  document.getElementById('lImg').src = pics[cur];
+}
+
+/* RSVP */
+var answer = '';
+
+function pick(choice) {
+  answer = choice;
+  document.getElementById('yes').classList.toggle('sel', choice === 'yes');
+  document.getElementById('no').classList.toggle('sel', choice === 'no');
+}
+
+function sendRsvp() {
+  var thanks = document.getElementById('thanks');
+  var name = document.getElementById('guestName').value.trim();
+  var number = document.getElementById('guestNumber').value.trim();
+
+  if (!answer) { thanks.textContent = 'Please choose Yes or No first.'; return; }
+  if (!name) { thanks.textContent = 'Please enter your name.'; return; }
+  if (answer === 'yes' && (!number || Number(number) < 1)) {
+    thanks.textContent = 'Please enter the number of people attending.'; return;
+  }
+
+  var msg = 'RSVP - Unveiling of Merriam Nteseng Tladi\n' +
+            'Name: ' + name + '\n' +
+            (answer === 'yes' ? 'Attending: Yes\nPeople: ' + number : 'Attending: No');
+
+  thanks.textContent = answer === 'yes'
+    ? 'Thank you, ' + name + '! We look forward to seeing you.'
+    : 'Thank you, ' + name + ', for letting us know.';
+
+  window.open('https://wa.me/27729714155?text=' + encodeURIComponent(msg), '_blank');
+}
+</script>
+
+</body>
+</html>
