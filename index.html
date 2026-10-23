@@ -191,7 +191,7 @@ a.btn.solid{color:var(--cream);}
       <p class="name">Merriam Nteseng Tladi</p>
     </div>
 
-    <img class="photo" src="images/Pic1.jpg" alt="Merriam Nteseng Tladi" onclick="openLight(0)">
+    <img class="photo" src="hhs/Pic1.jpg" alt="Merriam Nteseng Tladi" onclick="openLight(0)">
 
     <p class="verse">"In my Father's house are many mansions... I go to prepare a place for you."</p>
     <p class="ref">John 14:2</p>
@@ -303,7 +303,7 @@ function say(msg) {
   toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 5000);
 }
 
-/* SONG (file: songs/song.mp3) */
+/* SONG (file: song.mp3) */
 var song = document.getElementById('song');
 var musicBtn = document.getElementById('musicBtn');
 
@@ -311,7 +311,7 @@ song.addEventListener('play', function(){ musicBtn.classList.remove('off'); });
 song.addEventListener('pause', function(){ musicBtn.classList.add('off'); });
 song.addEventListener('error', function(){
   musicBtn.classList.add('off');
-  say('The song file was not found. Check that songs/song.mp3 is uploaded.');
+  say('The song file was not found. Check that song.mp3 is uploaded.');
 });
 
 var opened = false;
@@ -355,7 +355,7 @@ function show(id) {
 }
 
 /* PICTURES: tap to enlarge */
-var pics = ['images/Pic1.jpg', 'images/Pic2.jpg', 'images/Pic3.jpg'];
+var pics = ['Pic1.jpg', 'Pic2.jpg', 'images/Pic3.jpg'];
 var cur = 0;
 
 function openLight(i) {
