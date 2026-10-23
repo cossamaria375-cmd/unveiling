@@ -129,9 +129,6 @@ a.btn.solid{color:var(--cream);}
   background:var(--maind);color:var(--cream);border:2px solid var(--silver);border-radius:14px;padding:10px 16px;font-size:14px;}
 #toast.show{display:block;}
 
-/* HIDDEN YOUTUBE PLAYER */
-#ytbox{position:fixed;right:0;bottom:0;width:200px;height:200px;opacity:.01;pointer-events:none;z-index:0;overflow:hidden;}
-
 /* LIGHTBOX */
 #light{display:none;position:fixed;inset:0;z-index:30;background:rgba(17,17,19,.96);align-items:center;justify-content:center;}
 #light.show{display:flex;}
@@ -144,8 +141,8 @@ a.btn.solid{color:var(--cream);}
 </head>
 <body>
 
-<!-- SONG FROM YOUTUBE (hidden player) -->
-<div id="ytbox"><div id="ytplayer"></div></div>
+<!-- SONG FILE: songs/song.mp3 -->
+<audio id="song" src="songs/song.mp3" loop preload="auto"></audio>
 
 <div id="toast"></div>
 
@@ -295,7 +292,6 @@ a.btn.solid{color:var(--cream);}
 
 </div>
 
-<script src="https://www.youtube.com/iframe_api"></script>
 <script>
 /* SMALL MESSAGE */
 var toastTimer;
@@ -307,44 +303,16 @@ function say(msg) {
   toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 5000);
 }
 
-/* SONG (YouTube) */
-var VIDEO_ID = 's7eU7srtucA';
-var yt = null;
-var ytReady = false;
-var wantPlay = false;
+/* SONG (file: songs/song.mp3) */
+var song = document.getElementById('song');
 var musicBtn = document.getElementById('musicBtn');
 
-function onYouTubeIframeAPIReady() {
-  var pv = { loop: 1, playlist: VIDEO_ID, controls: 0, playsinline: 1, rel: 0 };
-  if (location.protocol.indexOf('http') === 0) { pv.origin = location.origin; }
-
-  yt = new YT.Player('ytplayer', {
-    width: '200',
-    height: '200',
-    videoId: VIDEO_ID,
-    playerVars: pv,
-    events: {
-      onReady: function () {
-        ytReady = true;
-        if (wantPlay) { yt.playVideo(); }
-      },
-      onStateChange: function (e) {
-        if (e.data === YT.PlayerState.PLAYING) { musicBtn.classList.remove('off'); }
-        if (e.data === YT.PlayerState.PAUSED) { musicBtn.classList.add('off'); }
-      },
-      onError: function (e) {
-        musicBtn.classList.add('off');
-        if (e.data === 101 || e.data === 150) {
-          say('This song is blocked from playing on other websites. Please choose another song.');
-        } else if (e.data === 153) {
-          say('Open this page with Live Server, not by double-clicking the file.');
-        } else {
-          say('The song cannot play right now (error ' + e.data + ').');
-        }
-      }
-    }
-  });
-}
+song.addEventListener('play', function(){ musicBtn.classList.remove('off'); });
+song.addEventListener('pause', function(){ musicBtn.classList.add('off'); });
+song.addEventListener('error', function(){
+  musicBtn.classList.add('off');
+  say('The song file was not found. Check that songs/song.mp3 is uploaded.');
+});
 
 var opened = false;
 
@@ -355,8 +323,10 @@ function openInvite() {
   document.getElementById('env').classList.add('open');
   document.getElementById('cover').classList.add('opening');
 
-  wantPlay = true;
-  if (ytReady) { yt.playVideo(); }
+  song.play().catch(function(){
+    musicBtn.classList.add('off');
+    say('Tap the round ♪ button to play the song.');
+  });
 
   setTimeout(function () {
     document.getElementById('cover').classList.add('hide');
@@ -367,12 +337,12 @@ function openInvite() {
 }
 
 function toggleMusic() {
-  if (!ytReady) { wantPlay = true; say('The song is still loading. Tap again in a moment.'); return; }
-  if (yt.getPlayerState() === YT.PlayerState.PLAYING) {
-    yt.pauseVideo();
-    musicBtn.classList.add('off');
+  if (song.paused) {
+    song.play().catch(function(){
+      say('The song cannot play. Check that songs/song.mp3 is uploaded.');
+    });
   } else {
-    yt.playVideo();
+    song.pause();
   }
 }
 
