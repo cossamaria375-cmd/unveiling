@@ -1,407 +1,686 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Unveiling</title>
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet">
-<style>
-:root{
-  --cream:#f4f3ef;
-  --paper:#fdfdfb;
-  --main:#232327;
-  --mainl:#3d3d44;
-  --maind:#111113;
-  --silver:#b9bcc4;
-  --silverd:#6e717a;
-  --ink:#2a2a2e;
-}
-*{box-sizing:border-box;}
-body{margin:0;font-family:'Lato',sans-serif;color:var(--ink);font-size:17px;min-height:100vh;
-  padding-bottom:100px;
-  background:linear-gradient(180deg,#fdfdfb,#e6e5e1) fixed;}
-h1,h2,h3,.name2,.big{font-family:'Playfair Display',serif;}
 
-/* COVER + ENVELOPE */
-#cover{position:fixed;inset:0;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;
-  background:radial-gradient(circle at 50% 30%,#fdfdfb,#dcdbd6 85%);
-  transition:transform 1s ease,opacity 1s ease;}
-#cover.hide{transform:scale(1.25);opacity:0;pointer-events:none;}
-#cover h2{font-size:34px;color:var(--main);margin:26px 0 4px;transition:opacity .5s;}
-#cover p{letter-spacing:3px;text-transform:uppercase;font-size:13px;margin:4px 0 22px;color:var(--silverd);transition:opacity .5s;}
-#cover .openbtn{font-family:'Playfair Display',serif;font-size:18px;padding:14px 34px;border-radius:40px;border:2px solid var(--silver);background:var(--main);color:var(--cream);font-weight:700;cursor:pointer;animation:pulse 1.6s infinite;transition:opacity .5s;}
-#cover.opening h2,#cover.opening p,#cover.opening .openbtn{opacity:0;}
-@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.07);}}
-.spark{position:absolute;color:var(--silver);animation:twinkle 3s infinite;}
-@keyframes twinkle{0%,100%{opacity:.2;transform:scale(.8);}50%{opacity:1;transform:scale(1.3);}}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0d0d0d">
+  <title>In Loving Memory | Tombstone Unveiling of Merriam Nteseng Tladi</title>
 
-.envwrap{position:relative;width:270px;height:180px;margin-top:70px;background:var(--main);border-radius:6px;
-  perspective:900px;box-shadow:0 14px 28px rgba(17,17,19,.35);cursor:pointer;animation:float 3s ease-in-out infinite;}
-.envwrap.open{animation:none;}
-@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
-.letter{position:absolute;left:12px;right:12px;top:12px;height:150px;background:var(--paper);border:2px solid var(--silver);border-radius:4px;
-  z-index:1;text-align:center;padding:14px 8px;transition:transform .9s ease .7s;}
-.letter .l1{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--silverd);}
-.letter .l2{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--main);margin:4px 0;letter-spacing:2px;text-transform:uppercase;}
-.letter .l3{font-family:'Playfair Display',serif;font-style:italic;font-size:16px;color:var(--ink);}
-.letter .l4{font-size:12px;color:var(--silverd);margin-top:6px;letter-spacing:1px;}
-.pocket{position:absolute;inset:0;background:var(--maind);clip-path:polygon(0 0,50% 55%,100% 0,100% 100%,0 100%);z-index:3;border-radius:6px;}
-.flap{position:absolute;left:0;top:0;width:100%;height:55%;background:var(--mainl);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top center;z-index:2;}
-.seal{position:absolute;left:50%;top:calc(55% - 20px);width:40px;height:40px;margin-left:-20px;border-radius:50%;background:var(--silver);color:var(--maind);
-  display:flex;align-items:center;justify-content:center;font-size:20px;z-index:5;border:2px solid #dcdee3;transition:opacity .3s;}
-.envwrap.open .seal{opacity:0;}
-.envwrap.open .flap{animation:flapopen .7s forwards;}
-.envwrap.open .letter{transform:translateY(-105px);}
-@keyframes flapopen{
-  0%{transform:rotateX(0deg);z-index:2;}
-  49%{z-index:2;}
-  50%{transform:rotateX(90deg);z-index:0;}
-  100%{transform:rotateX(180deg);z-index:0;}
-}
+  <script>document.documentElement.classList.add("js");</script>
 
-/* BOTTOM MENU */
-#main{display:none;}
-#main.show{display:block;}
-.tabs{position:fixed;left:0;right:0;bottom:0;z-index:8;display:flex;gap:2px;padding:8px 6px calc(8px + env(safe-area-inset-bottom));
-  background:var(--main);border-top:3px solid var(--silver);}
-.tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;background:none;border:none;color:#d9dbe0;padding:8px 2px;cursor:pointer;
-  font-family:'Lato',sans-serif;font-size:11px;letter-spacing:.3px;border-radius:12px;}
-.tab svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
-.tab.active{background:var(--silver);color:var(--maind);font-weight:700;}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&display=swap" rel="stylesheet">
 
-/* CARDS */
-.card{display:none;max-width:480px;margin:20px auto;border:2px solid var(--silver);border-top:7px solid var(--main);border-radius:18px;padding:22px;text-align:center;
-  box-shadow:0 10px 26px rgba(17,17,19,.18);position:relative;background:var(--paper);color:var(--ink);}
-.card.active{display:block;}
-#invite,#photos{background:linear-gradient(180deg,#ecebe7,var(--paper));}
-h1{font-size:34px;color:var(--main);margin:8px 0;}
-.label{font-family:'Playfair Display',serif;font-size:14px;letter-spacing:3px;text-transform:uppercase;color:var(--main);margin-top:16px;font-weight:700;}
-.big{font-size:26px;color:var(--main);margin:8px 0;}
-p{line-height:1.6;margin:6px 0;}
-.orn{display:flex;align-items:center;justify-content:center;gap:10px;margin:18px auto;width:200px;}
-.orn::before,.orn::after{content:"";flex:1;height:2px;background:var(--silver);}
-.orn span{width:10px;height:10px;background:var(--main);transform:rotate(45deg);}
+  <link rel="stylesheet" href="style.css">
 
-/* PENDANTS */
-#invite{margin-bottom:130px;}
-.pendants{position:absolute;left:0;right:0;bottom:-105px;height:105px;display:flex;justify-content:space-around;padding:0 24px;pointer-events:none;}
-.pend{display:flex;flex-direction:column;align-items:center;transform-origin:top center;animation:sway 3.2s ease-in-out infinite;}
-.pend .string{width:2px;background:var(--silver);}
-.pend svg{display:block;}
-@keyframes sway{0%,100%{transform:rotate(7deg);}50%{transform:rotate(-7deg);}}
-
-/* HOME */
-.top .small{letter-spacing:3px;text-transform:uppercase;font-size:13px;color:var(--silverd);margin:0;font-weight:700;}
-.top h1{font-size:44px;letter-spacing:4px;text-transform:uppercase;margin:6px 0;}
-.top .name{font-family:'Playfair Display',serif;font-style:italic;font-weight:600;font-size:26px;color:var(--ink);margin:2px 0 16px;}
-.photo{width:100%;height:auto;display:block;border-radius:14px;border:2px solid var(--silver);cursor:pointer;}
-.verse{font-family:'Playfair Display',serif;font-style:italic;color:var(--main);font-size:19px;margin-top:18px;}
-.ref{font-size:14px;color:var(--silverd);font-weight:700;letter-spacing:1px;}
-.name2{font-weight:700;font-size:26px;color:var(--main);margin:6px 0;font-style:italic;}
-
-.btn{display:block;width:100%;font-family:'Playfair Display',serif;font-size:17px;font-weight:700;letter-spacing:1px;padding:14px;margin-top:12px;border-radius:40px;cursor:pointer;text-decoration:none;text-align:center;}
-.btn.solid{background:var(--main);color:var(--cream);border:2px solid var(--main);}
-.btn.line{background:transparent;color:var(--main);border:2px solid var(--main);}
-
-/* GALLERY */
-.gallery{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;}
-.gallery div{height:220px;background:var(--cream);border-radius:10px;overflow:hidden;border:2px solid var(--silver);cursor:pointer;}
-.gallery img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
-
-@media(max-width:360px){.tab{font-size:10px;}.card{margin:12px;padding:16px;}.top h1{font-size:34px;}}
-
-/* RSVP */
-.choice{display:flex;gap:10px;margin:14px 0;}
-.choice button{flex:1;font-family:'Playfair Display',serif;font-size:20px;font-weight:700;padding:14px;border-radius:12px;border:3px solid var(--main);background:#fff;color:var(--main);cursor:pointer;}
-.choice button.sel{background:var(--main);color:var(--cream);}
-input{width:100%;padding:12px;margin:6px 0;font-size:16px;border:2px solid var(--silver);border-radius:8px;font-family:'Lato',sans-serif;background:#fff;color:var(--ink);}
-.send{font-family:'Playfair Display',serif;background:var(--main);color:var(--cream);border:none;padding:13px 32px;font-size:17px;border-radius:30px;cursor:pointer;margin-top:10px;font-weight:700;}
-#thanks{color:var(--main);font-weight:700;margin-top:12px;}
-a{color:var(--main);font-weight:700;}
-a.btn.solid{color:var(--cream);}
-
-/* MUSIC BUTTON + MESSAGE */
-#musicBtn{display:none;position:fixed;right:14px;bottom:92px;z-index:9;width:52px;height:52px;border-radius:50%;font-size:24px;line-height:1;
-  background:var(--main);color:#d9dbe0;border:2px solid var(--silver);cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.35);}
-#musicBtn.show{display:block;}
-#musicBtn.off{opacity:.55;}
-#toast{display:none;position:fixed;left:50%;bottom:160px;transform:translateX(-50%);z-index:40;max-width:88%;text-align:center;
-  background:var(--maind);color:var(--cream);border:2px solid var(--silver);border-radius:14px;padding:10px 16px;font-size:14px;}
-#toast.show{display:block;}
-
-/* LIGHTBOX */
-#light{display:none;position:fixed;inset:0;z-index:30;background:rgba(17,17,19,.96);align-items:center;justify-content:center;}
-#light.show{display:flex;}
-#light img{max-width:94%;max-height:86%;object-fit:contain;border:2px solid var(--silver);border-radius:8px;}
-#light button{position:absolute;background:var(--silver);color:var(--maind);border:none;font-size:26px;font-weight:700;width:48px;height:48px;border-radius:50%;cursor:pointer;}
-#lClose{top:14px;right:14px;}
-#lPrev{left:10px;top:50%;transform:translateY(-50%);}
-#lNext{right:10px;top:50%;transform:translateY(-50%);}
-</style>
 </head>
+
 <body>
 
-<!-- SONG FILE: songs/song.mp3 -->
-<audio id="song" src="songs/song.mp3" loop preload="auto"></audio>
 
-<div id="toast"></div>
+  <!-- SVG ICON SPRITE -->
 
-<!-- COVER: ENVELOPE THAT OPENS -->
-<div id="cover">
-  <span class="spark" style="top:10%;left:12%;font-size:28px">✦</span>
-  <span class="spark" style="top:18%;right:14%;font-size:20px;animation-delay:1s">✦</span>
-  <span class="spark" style="bottom:20%;left:18%;font-size:22px;animation-delay:.5s">✦</span>
-  <span class="spark" style="bottom:12%;right:10%;font-size:30px;animation-delay:1.5s">✦</span>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
 
-  <div class="envwrap" id="env" onclick="openInvite()">
-    <div class="letter">
-      <div class="l1">You are invited</div>
-      <div class="l2">Unveiling</div>
-      <div class="l3">Merriam Nteseng Tladi</div>
-      <div class="l4">26 December 2026 • 07h00</div>
+    <!-- Latin cross (full cross — both arms) -->
+    <symbol id="i-cross" viewBox="0 0 24 24">
+      <path d="M12 2v6M5 9h14M12 9v13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+
+    <!-- Dove descending -->
+    <symbol id="i-dove" viewBox="0 0 64 32">
+      <path d="M2 22c4 1 8-1 12-3 3-2 6-3 9-2-1-3 0-6 2-8 2-1 4 0 5 2 1 3 4 4 7 4 3 1 7 0 10-2 2-1 4-2 6-1 2 1 3 3 3 5 0 3-2 5-5 6-3 2-7 2-11 1-5-1-10 0-15 1-4 1-8 2-12 1-3-1-7-2-11-4Z" fill="currentColor" opacity="0.9"/>
+      <path d="M48 14c2-1 5-1 7 0" fill="none" stroke="currentColor" stroke-width="0.8" stroke-linecap="round"/>
+      <circle cx="50" cy="13" r="0.6" fill="#0d0d0d"/>
+    </symbol>
+
+    <!-- Candle with flame -->
+    <symbol id="i-candle" viewBox="0 0 24 32">
+      <path d="M12 1c2 2 3 4 3 6 0 2-1 3-3 4-2-1-3-2-3-4 0-2 1-4 3-6Z" fill="currentColor" opacity="0.9"/>
+      <path d="M12 9v1" stroke="currentColor" stroke-width="0.6"/>
+      <rect x="7" y="11" width="10" height="20" rx="1" fill="currentColor" opacity="0.85"/>
+      <path d="M9 13h6M9 17h6M9 21h6M9 25h6" stroke="#0d0d0d" stroke-width="0.4" opacity="0.4"/>
+    </symbol>
+
+    <!-- Angel wings spread -->
+    <symbol id="i-wings" viewBox="0 0 64 24">
+      <path d="M32 4c-3 4-7 7-12 9-4 1-9 2-14 1 3-2 6-3 9-3-4 0-8 1-12 2 3-3 7-4 11-4-3-1-6-1-9 0 3-2 7-3 11-2 2 0 4 1 6 2 2 1 4 2 6 2M32 4c3 4 7 7 12 9 4 1 9 2 14 1-3-2-6-3-9-3 4 0 8 1 12 2-3-3-7-4-11-4 3-1 6-1 9 0-3-2-7-3-11-2-2 0-4 1-6 2-2 1-4 2-6 2" fill="currentColor" opacity="0.85"/>
+    </symbol>
+
+    <!-- Fleur-de-lis accent -->
+    <symbol id="i-fleur" viewBox="0 0 24 24">
+      <path d="M12 2c-2 3-2 6 0 8 2-2 2-5 0-8ZM12 10c-3-2-6-1-7 2-1 3 1 5 4 5-2 1-3 3-2 5 1 2 3 3 5 2 2 1 4 0 5-2 1-2 0-4-2-5 3 0 5-2 4-5-1-3-4-4-7-2Z" fill="currentColor"/>
+    </symbol>
+
+    <!-- Corner filigree flourish -->
+    <symbol id="i-corner" viewBox="0 0 80 80">
+      <path d="M4 4c14 0 28 4 40 14 10 10 14 22 14 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      <path d="M4 18c10 0 22 4 32 12 8 8 12 18 12 32" fill="none" stroke="currentColor" stroke-width="0.8" stroke-linecap="round" opacity="0.7"/>
+      <path d="M18 4c0 10 4 22 12 32 8 8 18 12 32 12" fill="none" stroke="currentColor" stroke-width="0.8" stroke-linecap="round" opacity="0.7"/>
+      <circle cx="14" cy="14" r="2" fill="currentColor"/>
+      <path d="M4 4c2 6 6 10 12 12" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+      <path d="M30 30c4-4 8-6 14-6" fill="none" stroke="currentColor" stroke-width="0.6" stroke-linecap="round" opacity="0.5"/>
+    </symbol>
+
+    <!-- Ornamental divider -->
+    <symbol id="i-divider" viewBox="0 0 200 24">
+      <path d="M2 12h70" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+      <path d="M198 12h-70" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+      <path d="M72 12c4-4 8-6 14-4 4 1 6 4 14 4s10-3 14-4c6-2 10 0 14 4" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+      <path d="M128 12c-4-4-8-6-14-4-4 1-6 4-14 4s-10-3-14-4c-6-2-10 0-14 4" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+      <path d="M100 4 L104 12 L100 20 L96 12 Z" fill="currentColor"/>
+      <circle cx="88" cy="12" r="1.4" fill="currentColor"/>
+      <circle cx="112" cy="12" r="1.4" fill="currentColor"/>
+    </symbol>
+
+    <!-- Small diamond dot -->
+    <symbol id="i-dot" viewBox="0 0 8 8">
+      <path d="M4 0 L8 4 L4 8 L0 4 Z" fill="currentColor"/>
+    </symbol>
+
+    <!-- Utility icons -->
+    <symbol id="i-home" viewBox="0 0 24 24">
+      <path d="M3 11.5 12 4l9 7.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M5.5 10.2V20h13v-9.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M10 20v-5h4v5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </symbol>
+
+    <symbol id="i-invite" viewBox="0 0 24 24">
+      <rect x="3" y="5.5" width="18" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <path d="m3.5 7.5 8.5 6 8.5-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </symbol>
+
+    <symbol id="i-pin" viewBox="0 0 24 24">
+      <path d="M12 21s-6.5-5.4-6.5-10a6.5 6.5 0 0 1 13 0c0 4.6-6.5 10-6.5 10Z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="12" cy="10.8" r="2.3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+    </symbol>
+
+    <symbol id="i-check" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <path d="m8.3 12.3 2.5 2.5 5-5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+
+    <symbol id="i-wa" viewBox="0 0 24 24">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" fill="currentColor"/>
+    </symbol>
+
+    <symbol id="i-music" viewBox="0 0 24 24">
+      <path d="M9 17.5V6.2l11-2v11.3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="6.5" cy="17.5" r="2.6" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="17.5" cy="15.5" r="2.6" fill="none" stroke="currentColor" stroke-width="1.5"/>
+    </symbol>
+
+  </svg>
+
+
+  <!-- BACKGROUND MUSIC (soft ambient placeholder — replace song.mp3 with your own track) -->
+
+  <audio id="bgm" src="song.mp3" loop preload="auto"></audio>
+
+
+  <!-- WELCOME SCREEN -->
+
+  <div id="welcome-screen">
+
+    <div class="pattern-band"></div>
+
+    <div class="welcome-center">
+
+      <div class="welcome-box">
+
+        <div class="corner-flourish top-left" aria-hidden="true">
+          <svg><use href="#i-corner"/></svg>
+        </div>
+        <div class="corner-flourish top-right" aria-hidden="true">
+          <svg><use href="#i-corner"/></svg>
+        </div>
+        <div class="corner-flourish bottom-left" aria-hidden="true">
+          <svg><use href="#i-corner"/></svg>
+        </div>
+        <div class="corner-flourish bottom-right" aria-hidden="true">
+          <svg><use href="#i-corner"/></svg>
+        </div>
+
+        <div class="welcome-emblem" aria-hidden="true">
+          <svg class="emblem-wings"><use href="#i-wings"/></svg>
+          <svg class="emblem-cross"><use href="#i-cross"/></svg>
+        </div>
+
+        <p class="top-label">In Loving Memory</p>
+
+        <h1>Merriam Nteseng<br>Tladi</h1>
+
+        <p class="script-word">Tombstone Unveiling</p>
+
+        <svg class="welcome-divider" aria-hidden="true"><use href="#i-divider"/></svg>
+
+        <p class="welcome-dots">
+          <svg class="dot"><use href="#i-dot"/></svg>
+          <svg class="dot"><use href="#i-dot"/></svg>
+          <svg class="dot"><use href="#i-dot"/></svg>
+        </p>
+
+        <button type="button" class="btn btn-ping enter-btn" onclick="openInvitation()">
+
+          Open the Invitation
+
+        </button>
+
+        <p class="welcome-note">
+          <svg class="ic ic-small"><use href="#i-music"/></svg>
+          Turn your sound on &amp; tap above
+        </p>
+
+      </div>
+
     </div>
-    <div class="pocket"></div>
-    <div class="flap"></div>
-    <div class="seal">♥</div>
+
+    <div class="pattern-band"></div>
+
   </div>
 
-  <h2>You are invited</h2>
-  <p>Unveiling of a loved one</p>
-  <button class="openbtn" onclick="openInvite()">Open Invitation</button>
-</div>
 
-<button id="musicBtn" class="off" onclick="toggleMusic()">♪</button>
+  <!-- ENVELOPE OPENING MOMENT -->
 
-<!-- LIGHTBOX -->
-<div id="light" onclick="closeLight()">
-  <button id="lClose" onclick="closeLight()">×</button>
-  <button id="lPrev" onclick="event.stopPropagation();nav(-1)">‹</button>
-  <img id="lImg" src="" alt="" onclick="event.stopPropagation()">
-  <button id="lNext" onclick="event.stopPropagation();nav(1)">›</button>
-</div>
+  <div id="envelope-scene">
 
-<!-- MAIN -->
-<div id="main">
+    <div class="envelope">
 
-  <!-- HOME -->
-  <section class="card active" id="home">
-    <div class="top">
-      <p class="small">In memory of the late</p>
-      <h1>Unveiling</h1>
-      <p class="name">Merriam Nteseng Tladi</p>
+      <div class="env-back"></div>
+
+      <div class="letter">
+
+        <svg class="letter-emblem" aria-hidden="true">
+          <svg><use href="#i-wings"/></svg>
+        </svg>
+
+        <p class="letter-script">In Loving Memory of</p>
+
+        <p class="letter-names">Merriam Nteseng<br>Tladi</p>
+
+        <svg class="letter-divider" aria-hidden="true"><use href="#i-divider"/></svg>
+
+        <p class="letter-date">Saturday, 26 December 2026 &bull; 07H00</p>
+
+        <p class="letter-place">80374 Majakaneng, Sgandaf Sec</p>
+
+        <p class="letter-dots">
+          <svg class="dot"><use href="#i-dot"/></svg>
+          <svg class="dot"><use href="#i-dot"/></svg>
+          <svg class="dot"><use href="#i-dot"/></svg>
+        </p>
+
+      </div>
+
+      <div class="env-front"></div>
+
+      <div class="env-flap">
+        <div class="env-seal" aria-hidden="true">
+          <svg class="env-seal-cross"><use href="#i-cross"/></svg>
+        </div>
+      </div>
+
     </div>
 
-    <img class="photo" src="hhs/Pic1.jpg" alt="Merriam Nteseng Tladi" onclick="openLight(0)">
+    <p class="scene-note">Opening your invitation&hellip;</p>
 
-    <p class="verse">"In my Father's house are many mansions... I go to prepare a place for you."</p>
-    <p class="ref">John 14:2</p>
+  </div>
 
-    <button class="btn solid" onclick="show('invite')">VIEW INVITATION</button>
-    <button class="btn line" onclick="show('rsvp')">RSVP</button>
-  </section>
 
-  <!-- INVITE -->
-  <section class="card" id="invite">
-    <h1>Invitation</h1>
-    <div class="orn"><span></span></div>
-    <p>The family warmly invites you to join us as we unveil the tombstone of</p>
-    <div class="name2">Merriam Nteseng Tladi</div>
-    <p>and honour her life.</p>
-    <div class="orn"><span></span></div>
-    <div class="label">Date</div>
-    <p>Saturday, 26 December 2026</p>
-    <div class="label">Time</div>
-    <p>07h00</p>
-    <div class="label">Venue</div>
-    <p>80374 Majakaneng, Sgandaf Sec</p>
+  <!-- WEBSITE -->
 
-    <div class="pendants">
-      <div class="pend" style="animation-delay:0s"><div class="string" style="height:40px"></div>
-        <svg width="26" height="34" viewBox="0 0 26 34"><polygon points="13,0 26,17 13,34 0,17" fill="#232327" stroke="#b9bcc4" stroke-width="2"/></svg></div>
-      <div class="pend" style="animation-delay:.6s"><div class="string" style="height:62px"></div>
-        <svg width="26" height="26" viewBox="0 0 26 26"><circle cx="13" cy="13" r="11" fill="#fdfdfb" stroke="#b9bcc4" stroke-width="3"/></svg></div>
-      <div class="pend" style="animation-delay:1.2s"><div class="string" style="height:34px"></div>
-        <svg width="30" height="30" viewBox="0 0 30 30"><polygon points="15,1 19,11 29,11 21,18 24,28 15,22 6,28 9,18 1,11 11,11" fill="#b9bcc4" stroke="#6e717a" stroke-width="2"/></svg></div>
-      <div class="pend" style="animation-delay:1.8s"><div class="string" style="height:56px"></div>
-        <svg width="26" height="34" viewBox="0 0 26 34"><polygon points="13,0 26,17 13,34 0,17" fill="#fdfdfb" stroke="#232327" stroke-width="2"/></svg></div>
-      <div class="pend" style="animation-delay:2.4s"><div class="string" style="height:44px"></div>
-        <svg width="30" height="30" viewBox="0 0 30 30"><polygon points="15,1 19,11 29,11 21,18 24,28 15,22 6,28 9,18 1,11 11,11" fill="#232327" stroke="#b9bcc4" stroke-width="2"/></svg></div>
-    </div>
-  </section>
+  <div id="website">
 
-  <!-- TIMES -->
-  <section class="card" id="times">
-    <h1>Times</h1>
-    <div class="orn"><span></span></div>
-    <div class="label">Date</div>
-    <div class="big">Saturday, 26 December 2026</div>
-    <div class="label">Time</div>
-    <div class="big">07h00</div>
-  </section>
 
-  <!-- WHERE -->
-  <section class="card" id="where">
-    <h1>Where</h1>
-    <div class="orn"><span></span></div>
-    <div class="label">Venue</div>
-    <div class="big">80374 Majakaneng, Sgandaf Sec</div>
-    <a class="btn solid" target="_blank" href="https://www.google.com/maps/search/?api=1&query=80374%20Majakaneng%20Sgandaf">OPEN IN MAPS</a>
-  </section>
+    <!-- TOP NAVIGATION (desktop) -->
 
-  <!-- RSVP -->
-  <section class="card" id="rsvp">
-    <h1>RSVP</h1>
-    <p>Will you be attending?</p>
-    <div class="choice">
-      <button id="yes" onclick="pick('yes')">Yes</button>
-      <button id="no" onclick="pick('no')">No</button>
-    </div>
-    <input id="guestName" type="text" placeholder="Your name">
-    <input id="guestNumber" type="number" min="1" placeholder="Number of people">
-    <p>Call or WhatsApp: <a href="tel:+27729714155">+27 72 971 4155</a></p>
-    <button class="send" onclick="sendRsvp()">Send</button>
-    <div id="thanks"></div>
-  </section>
+    <nav class="topnav">
 
-  <!-- PHOTOS -->
-  <section class="card" id="photos">
-    <h1>Photos</h1>
-    <p>Tap a picture to enlarge it.</p>
-    <div class="gallery">
-      <div onclick="openLight(0)"><img src="images/Pic1.jpg" alt="Picture 1"></div>
-      <div onclick="openLight(1)"><img src="images/Pic2.jpg" alt="Picture 2"></div>
-      <div onclick="openLight(2)"><img src="images/Pic3.jpg" alt="Picture 3"></div>
-    </div>
-  </section>
+      <span class="brand">
+        <svg class="brand-cross"><use href="#i-cross"/></svg>
+        <span class="brand-name">Tladi Family</span>
+      </span>
 
-  <!-- BOTTOM MENU -->
-  <nav class="tabs">
-    <button class="tab active" data-id="home" onclick="show('home')">
-      <svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Home</button>
-    <button class="tab" data-id="invite" onclick="show('invite')">
-      <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Invite</button>
-    <button class="tab" data-id="times" onclick="show('times')">
-      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Times</button>
-    <button class="tab" data-id="where" onclick="show('where')">
-      <svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Where</button>
-    <button class="tab" data-id="rsvp" onclick="show('rsvp')">
-      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>RSVP</button>
-    <button class="tab" data-id="photos" onclick="show('photos')">
-      <svg viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.5"/></svg>Photos</button>
-  </nav>
+      <div class="navlinks">
 
-</div>
+        <button class="nav-btn" data-page="home" onclick="showPage('home')">
+          <svg class="ic"><use href="#i-home"/></svg><span>Home</span>
+        </button>
 
-<script>
-/* SMALL MESSAGE */
-var toastTimer;
-function say(msg) {
-  var t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 5000);
-}
+        <button class="nav-btn" data-page="invitation" onclick="showPage('invitation')">
+          <svg class="ic"><use href="#i-invite"/></svg><span>Invitation</span>
+        </button>
 
-/* SONG (file: song.mp3) */
-var song = document.getElementById('song');
-var musicBtn = document.getElementById('musicBtn');
+        <button class="nav-btn" data-page="location" onclick="showPage('location')">
+          <svg class="ic"><use href="#i-pin"/></svg><span>Location</span>
+        </button>
 
-song.addEventListener('play', function(){ musicBtn.classList.remove('off'); });
-song.addEventListener('pause', function(){ musicBtn.classList.add('off'); });
-song.addEventListener('error', function(){
-  musicBtn.classList.add('off');
-  say('The song file was not found. Check that song.mp3 is uploaded.');
-});
+        <button class="nav-btn" data-page="rsvp" onclick="showPage('rsvp')">
+          <svg class="ic"><use href="#i-check"/></svg><span>RSVP</span>
+        </button>
 
-var opened = false;
+      </div>
 
-function openInvite() {
-  if (opened) { return; }
-  opened = true;
+    </nav>
 
-  document.getElementById('env').classList.add('open');
-  document.getElementById('cover').classList.add('opening');
 
-  song.play().catch(function(){
-    musicBtn.classList.add('off');
-    say('Tap the round ♪ button to play the song.');
-  });
+    <!-- HOME -->
 
-  setTimeout(function () {
-    document.getElementById('cover').classList.add('hide');
-    document.getElementById('main').classList.add('show');
-    musicBtn.classList.add('show');
-    window.scrollTo(0, 0);
-  }, 2300);
-}
+    <section id="home" class="page active">
 
-function toggleMusic() {
-  if (song.paused) {
-    song.play().catch(function(){
-      say('The song cannot play. Check that songs/song.mp3 is uploaded.');
-    });
-  } else {
-    song.pause();
-  }
-}
+      <div class="home-container">
 
-/* MENU */
-function show(id) {
-  document.querySelectorAll('.card').forEach(function(c){ c.classList.remove('active'); });
-  document.querySelectorAll('.tab').forEach(function(t){ t.classList.toggle('active', t.getAttribute('data-id') === id); });
-  document.getElementById(id).classList.add('active');
-  window.scrollTo(0, 0);
-}
+        <p class="top-label reveal" style="--d:.05s">
+          <svg class="ic ic-small"><use href="#i-dove"/></svg>
+          In Loving Memory
+        </p>
 
-/* PICTURES: tap to enlarge */
-var pics = ['Pic1.jpg', 'Pic2.jpg', 'images/Pic3.jpg'];
-var cur = 0;
+        <h1 class="deceased-name reveal" style="--d:.15s">
 
-function openLight(i) {
-  cur = i;
-  document.getElementById('lImg').src = pics[cur];
-  document.getElementById('light').classList.add('show');
-}
-function closeLight() {
-  document.getElementById('light').classList.remove('show');
-}
-function nav(d) {
-  cur = (cur + d + pics.length) % pics.length;
-  document.getElementById('lImg').src = pics[cur];
-}
+          Merriam Nteseng
 
-/* RSVP */
-var answer = '';
+          <span>Tladi</span>
 
-function pick(choice) {
-  answer = choice;
-  document.getElementById('yes').classList.toggle('sel', choice === 'yes');
-  document.getElementById('no').classList.toggle('sel', choice === 'no');
-}
+        </h1>
 
-function sendRsvp() {
-  var thanks = document.getElementById('thanks');
-  var name = document.getElementById('guestName').value.trim();
-  var number = document.getElementById('guestNumber').value.trim();
+        <p class="script-word reveal" style="--d:.3s">Tombstone Unveiling</p>
 
-  if (!answer) { thanks.textContent = 'Please choose Yes or No first.'; return; }
-  if (!name) { thanks.textContent = 'Please enter your name.'; return; }
-  if (answer === 'yes' && (!number || Number(number) < 1)) {
-    thanks.textContent = 'Please enter the number of people attending.'; return;
-  }
+        <svg class="ornamental-divider reveal" style="--d:.4s" aria-hidden="true">
+          <use href="#i-divider"/>
+        </svg>
 
-  var msg = 'RSVP - Unveiling of Merriam Nteseng Tladi\n' +
-            'Name: ' + name + '\n' +
-            (answer === 'yes' ? 'Attending: Yes\nPeople: ' + number : 'Attending: No');
+        <!-- Main portrait photo (pic1.jpg) — gold filigree frame -->
+        <div class="photo-frame main-portrait reveal" style="--d:.5s">
 
-  thanks.textContent = answer === 'yes'
-    ? 'Thank you, ' + name + '! We look forward to seeing you.'
-    : 'Thank you, ' + name + ', for letting us know.';
+          <div class="frame-corner top-left" aria-hidden="true"><svg><use href="#i-corner"/></svg></div>
+          <div class="frame-corner top-right" aria-hidden="true"><svg><use href="#i-corner"/></svg></div>
+          <div class="frame-corner bottom-left" aria-hidden="true"><svg><use href="#i-corner"/></svg></div>
+          <div class="frame-corner bottom-right" aria-hidden="true"><svg><use href="#i-corner"/></svg></div>
 
-  window.open('https://wa.me/27729714155?text=' + encodeURIComponent(msg), '_blank');
-}
-</script>
+          <div class="photo-placeholder">
+            <img src="pic1.jpg" alt="Photograph of Merriam Nteseng Tladi" onerror="this.style.display='none'; this.parentElement.classList.add('no-image');">
+            <div class="placeholder-content">
+              <svg class="placeholder-emblem"><use href="#i-cross"/></svg>
+              <p class="placeholder-label">Place Photo 1 Here</p>
+              <p class="placeholder-hint">Save as <code>pic1.jpg</code></p>
+            </div>
+          </div>
+
+        </div>
+
+        <p class="caption reveal" style="--d:.6s">
+
+          Forever in our hearts &mdash; a life of love, faith and family.
+
+        </p>
+
+        <div class="cta-row reveal" style="--d:.7s">
+
+          <button type="button" class="btn btn-ping" onclick="showPage('invitation')">
+
+            <svg class="ic"><use href="#i-invite"/></svg>Read the Invitation
+
+          </button>
+
+          <button type="button" class="btn ghost" onclick="showPage('rsvp')">
+
+            <svg class="ic"><use href="#i-check"/></svg>RSVP
+
+          </button>
+
+        </div>
+
+        <svg class="ornamental-divider reveal" style="--d:.85s" aria-hidden="true">
+          <use href="#i-divider"/>
+        </svg>
+
+        <!-- Full Psalm 23:4 scripture card (moved here from Invitation page) -->
+        <div class="scripture-card reveal" style="--d:.95s">
+
+          <div class="scripture-corner top-left" aria-hidden="true"><svg><use href="#i-corner"/></svg></div>
+          <div class="scripture-corner top-right" aria-hidden="true"><svg><use href="#i-corner"/></svg></div>
+          <div class="scripture-corner bottom-left" aria-hidden="true"><svg><use href="#i-corner"/></svg></div>
+          <div class="scripture-corner bottom-right" aria-hidden="true"><svg><use href="#i-corner"/></svg></div>
+
+          <p class="scripture-label">
+            <svg class="ic ic-small"><use href="#i-cross"/></svg>
+            Scripture
+          </p>
+
+          <p class="scripture-ref">Psalm 23:4</p>
+
+          <blockquote class="scripture-text">
+
+            &ldquo;Yea, though I walk through the valley of the shadow of death, I will fear no evil: for thou art with me; thy rod and thy staff they comfort me.&rdquo;
+
+          </blockquote>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- INVITATION -->
+
+    <section id="invitation" class="page">
+
+      <div class="content">
+
+        <p class="section-title reveal">The Invitation</p>
+
+        <svg class="section-divider reveal" style="--d:.05s" aria-hidden="true">
+          <use href="#i-divider"/>
+        </svg>
+
+        <div class="photo-frame medium-portrait reveal" style="--d:.1s">
+
+          <div class="frame-corner top-left" aria-hidden="true"><svg><use href="#i-corner"/></svg></div>
+          <div class="frame-corner top-right" aria-hidden="true"><svg><use href="#i-corner"/></svg></div>
+          <div class="frame-corner bottom-left" aria-hidden="true"><svg><use href="#i-corner"/></svg></div>
+          <div class="frame-corner bottom-right" aria-hidden="true"><svg><use href="#i-corner"/></svg></div>
+
+          <div class="photo-placeholder">
+            <img src="pic2.jpg" alt="A photograph in memory of Merriam Tladi" onerror="this.style.display='none'; this.parentElement.classList.add('no-image');">
+            <div class="placeholder-content">
+              <svg class="placeholder-emblem"><use href="#i-dove"/></svg>
+              <p class="placeholder-label">Place Photo 2 Here</p>
+              <p class="placeholder-hint">Save as <code>pic2.jpg</code></p>
+            </div>
+          </div>
+
+        </div>
+
+        <p class="caption reveal" style="--d:.2s">
+
+          A treasured memory of a life beautifully lived.
+
+        </p>
+
+        <blockquote class="invitation-wording reveal" style="--d:.25s">
+
+          <p class="wording-host">The Tladi Family warmly invites you to join us as we unveil the tombstone of Merriam Nteseng Tladi and honour her life.</p>
+
+        </blockquote>
+
+        <svg class="ornamental-divider reveal" style="--d:.3s" aria-hidden="true">
+          <use href="#i-divider"/>
+        </svg>
+
+        <!-- Date / Time / Venue block (moved here from Home page) -->
+        <div class="date-block reveal" style="--d:.35s">
+
+          <p class="date-label">The Day of Remembrance</p>
+
+          <p class="date-main">Saturday, 26 December 2026</p>
+
+          <p class="date-time">07H00 &bull; Morning Service</p>
+
+          <p class="date-place">80374 Majakaneng, Sgandaf Sec</p>
+
+        </div>
+
+        <div class="line"></div>
+
+        <div class="reveal" style="--d:.1s">
+
+          
+          <p>
+
+            Your presence is a cherished comfort as we gather<br>
+            to remember, honour and celebrate her life.
+
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- LOCATION -->
+
+    <section id="location" class="page">
+
+      <div class="content">
+
+        <p class="section-title reveal">The Venue</p>
+
+        <svg class="section-divider reveal" style="--d:.05s" aria-hidden="true">
+          <use href="#i-divider"/>
+        </svg>
+
+        <div class="photo-frame medium-portrait reveal" style="--d:.1s">
+
+          <div class="frame-corner top-left" aria-hidden="true"><svg><use href="#i-corner"/></svg></div>
+          <div class="frame-corner top-right" aria-hidden="true"><svg><use href="#i-corner"/></svg></div>
+          <div class="frame-corner bottom-left" aria-hidden="true"><svg><use href="#i-corner"/></svg></div>
+          <div class="frame-corner bottom-right" aria-hidden="true"><svg><use href="#i-corner"/></svg></div>
+
+          <div class="photo-placeholder">
+            <img src="pic3.jpg" alt="A photograph of the family or venue" onerror="this.style.display='none'; this.parentElement.classList.add('no-image');">
+            <div class="placeholder-content">
+              <svg class="placeholder-emblem"><use href="#i-candle"/></svg>
+              <p class="placeholder-label">Place Photo 3 Here</p>
+              <p class="placeholder-hint">Save as <code>pic3.jpg</code></p>
+            </div>
+          </div>
+
+        </div>
+
+        <p class="caption reveal" style="--d:.2s">
+
+          Where family and loved ones will gather to honour her memory.
+
+        </p>
+
+        <div class="line"></div>
+
+        <div class="reveal" style="--d:.25s">
+
+          <h2>80374 Majakaneng</h2>
+
+          <p class="gold-text">
+
+            Sgandaf Sec &bull; South Africa
+
+          </p>
+
+          <p>
+
+            We look forward to gathering with family and friends
+            to unveil the tombstone and celebrate her life together.
+
+          </p>
+
+          <a
+
+            class="btn"
+
+            href="https://www.google.com/maps/search/?api=1&query=80374+Majakaneng,+Sgandaf+Sec,+South+Africa"
+
+            target="_blank"
+
+            rel="noopener"
+
+          >
+
+            <svg class="ic"><use href="#i-pin"/></svg>Open in Google Maps
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- RSVP -->
+
+    <section id="rsvp" class="page">
+
+      <div class="content">
+
+        <p class="section-title reveal">Kindly Reply</p>
+
+        <svg class="section-divider reveal" style="--d:.05s" aria-hidden="true">
+          <use href="#i-divider"/>
+        </svg>
+
+        <div class="gold-card reveal" style="--d:.1s" id="rsvpCard">
+
+          <div class="card-corner top-left" aria-hidden="true"><svg><use href="#i-corner"/></svg></div>
+          <div class="card-corner top-right" aria-hidden="true"><svg><use href="#i-corner"/></svg></div>
+          <div class="card-corner bottom-left" aria-hidden="true"><svg><use href="#i-corner"/></svg></div>
+          <div class="card-corner bottom-right" aria-hidden="true"><svg><use href="#i-corner"/></svg></div>
+
+          <h2 class="card-head">
+            <svg class="ic ic-small"><use href="#i-cross"/></svg>
+            RSVP
+          </h2>
+
+          <p class="card-msg">
+
+            Please fill in your details below &mdash; your reply
+            will open in WhatsApp, ready to send to the family.
+
+          </p>
+
+          <div class="field">
+
+            <label for="rsvpName">Your full name</label>
+
+            <input type="text" id="rsvpName" placeholder="e.g. Thabo Mokoena" autocomplete="name">
+
+          </div>
+
+          <div class="field">
+
+            <label>Number of guests</label>
+
+            <div class="stepper">
+
+              <button type="button" onclick="stepGuests(-1)" aria-label="Fewer guests">&minus;</button>
+
+              <span id="guestCount">1</span>
+
+              <button type="button" onclick="stepGuests(1)" aria-label="More guests">+</button>
+
+            </div>
+
+          </div>
+
+          <div class="field">
+
+            <label>Will you be attending?</label>
+
+            <div class="seg">
+
+              <button type="button" class="seg-btn active" onclick="setAttending('yes', this)">Will attend</button>
+
+              <button type="button" class="seg-btn" onclick="setAttending('no', this)">Regretfully decline</button>
+
+            </div>
+
+          </div>
+
+          <button type="button" class="btn wa" onclick="sendRSVP()">
+
+            <svg class="ic ic-fill"><use href="#i-wa"/></svg>RSVP on WhatsApp
+
+          </button>
+
+          <p class="wa-note">Opens WhatsApp with your reply ready to send.</p>
+
+          <p id="rsvpError" role="alert"></p>
+
+          <p class="wa-fallback">
+
+            Or message the family directly:
+
+            <a href="https://wa.me/27738250030" target="_blank" rel="noopener">+27 73 825 0030</a>
+
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- PATTERN BAND + FOOTER -->
+
+    <div class="pattern-band"></div>
+
+    <footer>
+
+      <svg class="footer-emblem" aria-hidden="true">
+        <svg><use href="#i-cross"/></svg>
+      </svg>
+
+      <p class="footer-small">In Loving Memory of</p>
+
+      <p class="footer-name">Merriam Nteseng Tladi</p>
+
+      <p class="footer-small">26 December 2026 &bull; 80374 Majakaneng, Sgandaf Sec</p>
+
+      <p class="footer-dots">
+        <svg class="dot"><use href="#i-dot"/></svg>
+        <svg class="dot"><use href="#i-dot"/></svg>
+        <svg class="dot"><use href="#i-dot"/></svg>
+      </p>
+
+      <p class="footer-script">The Tladi Family</p>
+
+    </footer>
+
+
+    <!-- BOTTOM NAVIGATION (mobile) -->
+
+    <nav class="bottomnav">
+
+      <button class="nav-btn" data-page="home" onclick="showPage('home')">
+        <svg class="ic"><use href="#i-home"/></svg><span>Home</span>
+      </button>
+
+      <button class="nav-btn" data-page="invitation" onclick="showPage('invitation')">
+        <svg class="ic"><use href="#i-invite"/></svg><span>Invite</span>
+      </button>
+
+      <button class="nav-btn" data-page="location" onclick="showPage('location')">
+        <svg class="ic"><use href="#i-pin"/></svg><span>Where</span>
+      </button>
+
+      <button class="nav-btn" data-page="rsvp" onclick="showPage('rsvp')">
+        <svg class="ic"><use href="#i-check"/></svg><span>RSVP</span>
+      </button>
+
+    </nav>
+
+
+  </div>
+
+
+  <!-- FLOATING MUSIC CONTROL -->
+
+  <button type="button" id="musicBtn" onclick="toggleMusic()" aria-label="Play music">
+
+    <svg class="ic"><use href="#i-music"/></svg>
+
+  </button>
+
+
+  <!-- JAVASCRIPT -->
+
+  <script src="script.js"></script>
 
 </body>
+
 </html>
